@@ -8,36 +8,37 @@ namespace Oop_lab2
 {
     class Point2D
     {
+
         private double x;
         private double y;
 
-
-        public Point2D(){
-
+        public Point2D(double _x, double _y){
+            x = _x;
+            y = _y;
         }
 
         public double GetX()
         {
-            return 0;
+            return x;
         }
-        public double getX()
+        public double GetY()
         {
-            return 0;
-        }
-
-        public double ShiftX()
-        {
-            return 0;
+            return y;
         }
 
-        public double ShiftY()
+        public void ShiftX(double value)
         {
-            return 0;
+            x = value;
         }
 
-        public double GetDistance()
+        public void ShiftY(double value)
         {
-            return 0;
+            y = value;
+        }
+
+        public double GetDistance(Point2D other_point2D)
+        {
+            return (Math.Sqrt( Math.Pow((x-other_point2D.x),2) + Math.Pow((y-other_point2D.y),2)));
         }
     }
 
