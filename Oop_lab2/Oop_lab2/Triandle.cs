@@ -13,9 +13,11 @@ namespace Oop_lab2
         private Point2D p3;
 
 
-        public Triandle(Point2D p1, Point2D p2, Point2D p3)
+        public Triandle(Point2D _p1, Point2D _p2, Point2D _p3)
         {
-
+            p1 = _p1;
+            p2 = _p2;
+            p3 = _p3;
         }
 
         public Point2D GetPoint1()

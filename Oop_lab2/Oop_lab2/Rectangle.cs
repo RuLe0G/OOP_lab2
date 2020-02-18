@@ -14,9 +14,12 @@ namespace Oop_lab2
         private Point2D p4;
 
 
-        public Rectangle(Point2D p1, Point2D p2, Point2D p3, Point2D p4)
+        public Rectangle(Point2D _p1, Point2D _p2, Point2D _p3, Point2D _p4)
         {
-
+            p1 = _p1;
+            p2 = _p2;
+            p3 = _p3;
+            p4 = _p4;
         }
 
         public Point2D GetPoint1()
