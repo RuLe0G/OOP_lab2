@@ -58,7 +58,7 @@ namespace Oop_lab2
 
         public double GetArea()
         {
-            return (Math.Sqrt((GetPerimeter()/2 *(GetPerimeter() / 2 - p1.GetDistance(p2))) +
+            return (Math.Sqrt((GetPerimeter() / 2 * (GetPerimeter() / 2 - p1.GetDistance(p2))) +
                         (GetPerimeter() / 2 * (GetPerimeter() / 2 - p2.GetDistance(p3))) +
                         (GetPerimeter() / 2 * (GetPerimeter() / 2 - p3.GetDistance(p1)))
                        ));
