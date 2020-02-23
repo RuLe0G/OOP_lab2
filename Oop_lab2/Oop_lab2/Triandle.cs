@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Oop_lab2
 {
-    class Triandle
+    class Triangle
     {
         private Point2D p1;
         private Point2D p2;
         private Point2D p3;
 
 
-        public Triandle(Point2D _p1, Point2D _p2, Point2D _p3)
+        public Triangle(Point2D _p1, Point2D _p2, Point2D _p3)
         {
             p1 = _p1;
             p2 = _p2;

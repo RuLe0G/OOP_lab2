@@ -24,11 +24,15 @@ namespace Oop_lab2
         {
             InitializeComponent();
 
-            Point2D begin = new Point2D(10, 50);
-            Point2D end = new Point2D(10, 10);
+            //Random random = new Random();
+            //Point2D p1 = new Point2D(random.NextDouble() * (200), random.NextDouble() * 200);
+            //Point2D p2 = new Point2D(random.NextDouble() * (200), random.NextDouble() * 200);
+            //Point2D p3 = new Point2D(random.NextDouble() * (200), random.NextDouble() * 200);
+            //Point2D p4 = new Point2D(random.NextDouble() * (200), random.NextDouble() * 200);
+            //Rectangle rectangle = new Rectangle(p1, p2, p3, p4);
+            //drawRectangle(rectangle);
 
-            drawLine(begin, end);
-            
+            //Triangle triangle = new Triangle(p1, p2, p3);
         }
 
         private void drawLine(Point2D begin, Point2D end)
@@ -43,14 +47,50 @@ namespace Oop_lab2
             canvas.Children.Add(line);
         }
 
-        private void drawTriangle(Triandle triandle)
+        private void drawTriangle(object sender, RoutedEventArgs e)
         {
 
+            Random random = new Random();
+            Point2D p1 = new Point2D(random.NextDouble() * (774), random.NextDouble() * 276);
+            Point2D p2 = new Point2D(random.NextDouble() * (774), random.NextDouble() * 276);
+            Point2D p3 = new Point2D(random.NextDouble() * (774), random.NextDouble() * 276);
+
+            Triangle triangle = new Triangle(p1, p2, p3);
+
+            drawLine(triangle.GetPoint1(), triangle.GetPoint2());
+            drawLine(triangle.GetPoint2(), triangle.GetPoint3());
+            drawLine(triangle.GetPoint3(), triangle.GetPoint1());
+
+            Stat.Content = ("Координаты вершин: \n" + "p1 - " + triangle.GetPoint1().GetX().ToString("0.00") + ", " + triangle.GetPoint1().GetY().ToString("0.00") + "\n"
+                + "p2 - " + triangle.GetPoint2().GetX().ToString("0.00") + ", " + triangle.GetPoint2().GetY().ToString("0.00") + "\n"
+                + "p3 - " + triangle.GetPoint3().GetX().ToString("0.00") + ", " + triangle.GetPoint3().GetY().ToString("0.00") + "\n"
+                + "Периметр - " + triangle.GetPerimeter().ToString("0.00") + "\n"
+                + "Площадь - " + triangle.GetArea().ToString("0.00"));
         }
 
         private void drawRectangle(Rectangle rectangle)
         {
+            drawLine(rectangle.GetPoint1(), rectangle.GetPoint2());
+            drawLine(rectangle.GetPoint2(), rectangle.GetPoint3());
+            drawLine(rectangle.GetPoint3(), rectangle.GetPoint4());
+            drawLine(rectangle.GetPoint4(), rectangle.GetPoint1());
+
+            Stat.Content = ("Координаты вершин: \n" + rectangle.GetPoint1().GetX() + ", " + rectangle.GetPoint1().GetY() + "\n"
+                + rectangle.GetPoint2().GetX() + ", " + rectangle.GetPoint2().GetY() + "\n"
+                + rectangle.GetPoint3().GetX() + ", " + rectangle.GetPoint3().GetY() + "\n"
+                + rectangle.GetPoint4().GetX() + ", " + rectangle.GetPoint4().GetY() + "\n");
+        }
+
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            canvas.Children.Clear();
+            Stat.Content = ("Координаты вершин: \n");
+            SliderX.Value = 0;
+            SliderY.Value = 0;
 
         }
+
+
     }
 }
