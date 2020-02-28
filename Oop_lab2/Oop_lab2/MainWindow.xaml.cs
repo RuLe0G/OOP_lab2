@@ -24,13 +24,7 @@ namespace Oop_lab2
         {
             InitializeComponent();
 
-            //Random random = new Random();
-            //Point2D p1 = new Point2D(random.NextDouble() * (200), random.NextDouble() * 200);
-            //Point2D p2 = new Point2D(random.NextDouble() * (200), random.NextDouble() * 200);
-            //Point2D p3 = new Point2D(random.NextDouble() * (200), random.NextDouble() * 200);
-            //Point2D p4 = new Point2D(random.NextDouble() * (200), random.NextDouble() * 200);
-            //Rectangle rectangle = new Rectangle(p1, p2, p3, p4);
-            //drawRectangle(rectangle);
+            
 
             //Triangle triangle = new Triangle(p1, p2, p3);
         }
@@ -68,17 +62,30 @@ namespace Oop_lab2
                 + "Площадь - " + triangle.GetArea().ToString("0.00"));
         }
 
-        private void drawRectangle(Rectangle rectangle)
+        private void drawRectangle(object sender, RoutedEventArgs e)
         {
+            Random random = new Random();
+            double disX = random.NextDouble() * 774;
+            double disY = random.NextDouble() * 276;
+            Point2D p1 = new Point2D(random.NextDouble() * (774 - disX), random.NextDouble() * (276 - disY));
+            Point2D p2 = new Point2D(p1.GetX() + disX, p1.GetY());
+            Point2D p4 = new Point2D(p1.GetX(), p1.GetY() + disY);
+            Point2D p3 = new Point2D(p1.GetX() + disX, p1.GetY() + disY);
+
+            Rectangle rectangle = new Rectangle(p1, p2, p3, p4);
+
+
             drawLine(rectangle.GetPoint1(), rectangle.GetPoint2());
             drawLine(rectangle.GetPoint2(), rectangle.GetPoint3());
             drawLine(rectangle.GetPoint3(), rectangle.GetPoint4());
             drawLine(rectangle.GetPoint4(), rectangle.GetPoint1());
 
-            Stat.Content = ("Координаты вершин: \n" + rectangle.GetPoint1().GetX() + ", " + rectangle.GetPoint1().GetY() + "\n"
-                + rectangle.GetPoint2().GetX() + ", " + rectangle.GetPoint2().GetY() + "\n"
-                + rectangle.GetPoint3().GetX() + ", " + rectangle.GetPoint3().GetY() + "\n"
-                + rectangle.GetPoint4().GetX() + ", " + rectangle.GetPoint4().GetY() + "\n");
+            Stat.Content = ("Координаты вершин: \n" + "p1 - " + rectangle.GetPoint1().GetX().ToString("0.00") + ", " + rectangle.GetPoint1().GetY().ToString("0.00") + "\n"
+                 + "p2 - " + rectangle.GetPoint2().GetX().ToString("0.00") + ", " + rectangle.GetPoint2().GetY().ToString("0.00") + "\n"
+                 + "p3 - " + rectangle.GetPoint3().GetX().ToString("0.00") + ", " + rectangle.GetPoint3().GetY().ToString("0.00") + "\n"
+                 + "p4 - " + rectangle.GetPoint4().GetX().ToString("0.00") + ", " + rectangle.GetPoint4().GetY().ToString("0.00") + "\n"
+                 + "Периметр - " + rectangle.GetPerimeter().ToString("0.00") + "\n"
+                 + "Площадь - " + rectangle.GetArea().ToString("0.00"));
         }
 
 
@@ -91,6 +98,32 @@ namespace Oop_lab2
 
         }
 
+        private void Sq_Click(object sender, RoutedEventArgs e)
+        {
 
+            Random random = new Random();
+            double dis = random.NextDouble() * 276;
+            Point2D p1 = new Point2D(random.NextDouble() * (774-dis), random.NextDouble() * (276- dis));
+            Point2D p2 = new Point2D(p1.GetX() + dis, p1.GetY());
+            Point2D p4 = new Point2D(p1.GetX(), p1.GetY() + dis);
+            Point2D p3 = new Point2D(p1.GetX() + dis, p1.GetY() + dis);
+
+            Rectangle rectangle = new Rectangle(p1, p2, p3, p4);
+
+
+
+
+            drawLine(rectangle.GetPoint1(), rectangle.GetPoint2());
+            drawLine(rectangle.GetPoint2(), rectangle.GetPoint3());
+            drawLine(rectangle.GetPoint3(), rectangle.GetPoint4());
+            drawLine(rectangle.GetPoint4(), rectangle.GetPoint1());
+
+            Stat.Content = ("Координаты вершин: \n" + "p1 - " + rectangle.GetPoint1().GetX().ToString("0.00") + ", " + rectangle.GetPoint1().GetY().ToString("0.00") + "\n"
+                 + "p2 - " + rectangle.GetPoint2().GetX().ToString("0.00") + ", " + rectangle.GetPoint2().GetY().ToString("0.00") + "\n"
+                 + "p3 - " + rectangle.GetPoint3().GetX().ToString("0.00") + ", " + rectangle.GetPoint3().GetY().ToString("0.00") + "\n"
+                 + "p4 - " + rectangle.GetPoint4().GetX().ToString("0.00") + ", " + rectangle.GetPoint4().GetY().ToString("0.00") + "\n"
+                 + "Периметр - " + rectangle.GetPerimeter().ToString("0.00") + "\n"
+                 + "Площадь - " + rectangle.GetArea().ToString("0.00"));
+        }
     }
 }
