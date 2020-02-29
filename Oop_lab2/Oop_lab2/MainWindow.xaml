@@ -9,11 +9,11 @@
     <Grid Background="Silver">
         <Label x:Name="Stat" Content="Координаты вершин:" HorizontalAlignment="Left" Margin="583,10,0,0" VerticalAlignment="Top" Height="119" Width="201"/>
         <Canvas x:Name="canvas" Background="White" Margin="0,134,9.6,10" HorizontalAlignment="Right" Width="774" Grid.RowSpan="2"/>
-        <Button x:Name="Rec" Content="Произвольный прямоугольник" Margin="10,10,597.6,342" Click="drawRectangle" />
-        <Button x:Name="Tri" Content="Произвольный треугольник" Margin="201,10,406.6,342" Click="drawTriangle" />
+        <Button x:Name="Rec" Content="Произвольный прямоугольник" Margin="10,10,597.6,342" Click="clickRectangle" />
+        <Button x:Name="Tri" Content="Произвольный треугольник" Margin="201,10,406.6,342" Click="clickTriangle" />
         <Button x:Name="Sq" Content="Квадрат" Margin="392,10,215.6,342" Click="Sq_Click" />
-        <Slider x:Name="SliderX" HorizontalAlignment="Left" Margin="201,88,0,0" VerticalAlignment="Top" Width="377" IsDirectionReversed="True" Minimum="-100" Maximum="100"/>
-        <Slider x:Name="SliderY" HorizontalAlignment="Left" Margin="201,111,0,0" VerticalAlignment="Top" Width="377" Minimum="-100" Maximum="100"/>
+        <Slider x:Name="SliderX" HorizontalAlignment="Left" Margin="201,88,0,0" VerticalAlignment="Top" Width="377" IsDirectionReversed="True" Maximum="774" ValueChanged="SliderX_ValueChanged" Minimum="-774"/>
+        <Slider x:Name="SliderY" HorizontalAlignment="Left" Margin="201,111,0,0" VerticalAlignment="Top" Width="377" Minimum="-276" Maximum="276" ValueChanged="SliderY_ValueChanged"/>
         <Label Content="Сдвиг по X:" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Height="23" Width="186"/>
         <Label Content="Сдвиг по Y:" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Height="23" Width="186"/>
         <Button x:Name="Clear" Content="X" Margin="761,113,9.6,0" VerticalAlignment="Top" Height="22" Click="Clear_Click"/>
