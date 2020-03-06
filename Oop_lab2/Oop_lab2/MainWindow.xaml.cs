@@ -21,7 +21,7 @@ namespace Oop_lab2
     public partial class MainWindow : Window
     {
 
-
+        Rectangle PointRec= null;
         Rectangle rectangle = null;
         Triangle triangle = null;
 
@@ -48,7 +48,14 @@ namespace Oop_lab2
 
         private void clickTriangle(object sender, RoutedEventArgs e)
         {
-            drawTriangle(Generation.GenTriangle());
+            canvas.Children.Clear();
+            Stat.Content = ("Координаты вершин: \n");
+            SliderX.Value = 0;
+            SliderY.Value = 0;
+            rectangle = null;
+            PointRec = null;
+            triangle = Generation.GenTriangle();
+            drawTriangle(triangle);
         }
 
         private void drawTriangle(Triangle trian)
@@ -67,17 +74,13 @@ namespace Oop_lab2
 
         private void clickRectangle(object sender, RoutedEventArgs e)
         {
+            canvas.Children.Clear();
+            Stat.Content = ("Координаты вершин: \n");
+            SliderX.Value = 0;
+            SliderY.Value = 0;
             triangle = null;
-            Random random = new Random();
-            double disX = random.NextDouble() * 774;
-            double disY = random.NextDouble() * 276;
-            Point2D p1 = new Point2D(random.NextDouble() * (774 - disX), random.NextDouble() * (276 - disY));
-            Point2D p2 = new Point2D(p1.GetX() + disX, p1.GetY());
-            Point2D p4 = new Point2D(p1.GetX(), p1.GetY() + disY);
-            Point2D p3 = new Point2D(p1.GetX() + disX, p1.GetY() + disY);
-
-            rectangle = new Rectangle(p1, p2, p3, p4);
-
+            PointRec = null;
+            rectangle = Generation.GenRectangle();
             drawRectangle(rectangle);
 
         }
@@ -107,20 +110,18 @@ namespace Oop_lab2
             SliderY.Value = 0;
             rectangle = null;
             triangle = null;
+            PointRec = null;
         }
 
         private void Sq_Click(object sender, RoutedEventArgs e)
         {
-
-            Random random = new Random();
-            double dis = random.NextDouble() * 276;
-            Point2D p1 = new Point2D(random.NextDouble() * (774 - dis), random.NextDouble() * (276 - dis));
-            Point2D p2 = new Point2D(p1.GetX() + dis, p1.GetY());
-            Point2D p4 = new Point2D(p1.GetX(), p1.GetY() + dis);
-            Point2D p3 = new Point2D(p1.GetX() + dis, p1.GetY() + dis);
-
-            rectangle = new Rectangle(p1, p2, p3, p4);
-
+            canvas.Children.Clear();
+            Stat.Content = ("Координаты вершин: \n");
+            SliderX.Value = 0;
+            SliderY.Value = 0;
+            triangle = null;
+            PointRec = null;
+            rectangle = Generation.GenSq();
             drawRectangle(rectangle);
 
         }
@@ -136,7 +137,6 @@ namespace Oop_lab2
                 canvas.Children.Clear();
                 drawRectangle(rectangle);
             }
-
             if (triangle != null)
             {
                 triangle.GetPoint1().ShiftX(triangle.GetPoint1().GetX() - double.Parse(SliderX.Value.ToString()));
@@ -147,6 +147,16 @@ namespace Oop_lab2
                 drawTriangle(triangle);
 
 
+            }
+            if (PointRec != null)
+            {
+                PointRec.GetPoint1().ShiftX(PointRec.GetPoint1().GetX() - double.Parse(SliderX.Value.ToString()));
+                PointRec.GetPoint2().ShiftX(PointRec.GetPoint2().GetX() - double.Parse(SliderX.Value.ToString()));
+                PointRec.GetPoint3().ShiftX(PointRec.GetPoint3().GetX() - double.Parse(SliderX.Value.ToString()));
+                PointRec.GetPoint4().ShiftX(PointRec.GetPoint4().GetX() - double.Parse(SliderX.Value.ToString()));
+                canvas.Children.Clear();
+                drawRectangle(PointRec);
+                Stat.Content = ("Координаты точки: \np1 - " + PointRec.GetPoint1().GetX().ToString("0.00") + ", " + PointRec.GetPoint1().GetY().ToString("0.00"));
             }
 
             SliderX.Value = 0;
@@ -163,7 +173,6 @@ namespace Oop_lab2
                 canvas.Children.Clear();
                 drawRectangle(rectangle);
             }
-
             if (triangle != null)
             {
                 triangle.GetPoint1().ShiftY(triangle.GetPoint1().GetY() - double.Parse(SliderY.Value.ToString()));
@@ -175,8 +184,53 @@ namespace Oop_lab2
 
 
             }
+            if (PointRec != null)
+            {
+                PointRec.GetPoint1().ShiftY(PointRec.GetPoint1().GetY() - double.Parse(SliderY.Value.ToString()));
+                PointRec.GetPoint2().ShiftY(PointRec.GetPoint2().GetY() - double.Parse(SliderY.Value.ToString()));
+                PointRec.GetPoint3().ShiftY(PointRec.GetPoint3().GetY() - double.Parse(SliderY.Value.ToString()));
+                PointRec.GetPoint4().ShiftY(PointRec.GetPoint4().GetY() - double.Parse(SliderY.Value.ToString()));
+                canvas.Children.Clear();
+                drawRectangle(PointRec);
+                Stat.Content = ("Координаты точки: \np1 - " + PointRec.GetPoint1().GetX().ToString("0.00") + ", " + PointRec.GetPoint1().GetY().ToString("0.00"));
+            }
 
             SliderY.Value = 0;
         }
+
+        private void Rand_Point_Click(object sender, RoutedEventArgs e)
+        {
+            canvas.Children.Clear();
+            SliderX.Value = 0;
+            SliderY.Value = 0;
+            triangle = null;
+            triangle = null;
+            PointRec = Generation.GenRectanglePar(1, 1);
+            drawRectangle(PointRec);
+            Stat.Content = ("Координаты точки: \np1 - " + PointRec.GetPoint1().GetX().ToString("0.00") + ", " + PointRec.GetPoint1().GetY().ToString("0.00"));
+        }
+
+        private void Rec_norand_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                canvas.Children.Clear();
+                Stat.Content = ("Координаты вершин: \n");
+                SliderX.Value = 0;
+                SliderY.Value = 0;
+                triangle = null;
+                PointRec = null;
+                rectangle = Generation.GenRectanglePar(double.Parse(A.Text.ToString()), double.Parse(B.Text.ToString()));
+                drawRectangle(rectangle);
+                A.Text = "Ширина"; B.Text = "Высота";
+            }
+            catch (Exception)
+            {
+                Stat.Content = ("Вы должны ввести ширину и \nвысоту прямоугольника");
+            }
+            
+        }
+
+       
     }
 }
